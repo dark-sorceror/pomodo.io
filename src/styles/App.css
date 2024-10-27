@@ -36,7 +36,6 @@
 
 
 .btn {
-
     width: 48px;
     height: 48px;
     border: solid 1px transparent;
@@ -69,11 +68,13 @@ nav {
     top: 0;
     left: 0;
 
-    height: 120px;
+    height: 150px;
 
 }
 
-.left, .logo, .right {
+.left,
+.logo,
+.right {
     flex-grow: 1;
     flex-basis: 0;
     display: flex;
@@ -114,23 +115,19 @@ li {
 .container {
     display: flex;
     flex: 1;
-    margin-top: 160px;
     width: 100%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 
 .dragon {
     margin-top: 160px;
+    
 }
 
-.footer {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 60px;
-}
 
 .menu {
     display: flex;
@@ -147,21 +144,29 @@ li {
     border-radius: 10px;
 }
 
-.ldm {
-    position: absolute;
-    right: 0;
+.timer-container {
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .timer {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    padding: 30px;
-    border-radius: 50px;
-    border: 1px solid black;
-    height: fit-content;
+    border-radius: 200px;
     width: 300px;
+    height: 300px;
+    margin-right: 100px;
     background-color: rgba(200, 173, 230, 0.548);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    z-index: 5;
+}
+
+.timer-modes {
+    display: flex;
+    flex-direction: column;
 }
 
 .timer h1 {
@@ -180,6 +185,7 @@ li {
     border-radius: 20px;
     font-size: 30px;
     font-weight: 600;
+    width: 100%;
     background-color: rgb(160, 76, 255);
 }
 
@@ -188,8 +194,10 @@ li {
     border-radius: 10px;
     padding: 10px;
     font-weight: 600;
+    width: 100%;
     font-size: 20px;
     background-color: rgba(128, 60, 206, 0.233);
+    width: 100px;
 }
 
 .timer-modes {
@@ -206,7 +214,7 @@ li {
     border-radius: 5px;
     font-weight: 600;
     font-size: 16px;
-    background-color: rgb(160, 76, 255);
+    background-color: rgb(241, 184, 255);
 }
 
 .timer-modes button:not(:last-child) {
@@ -214,3 +222,72 @@ li {
 }
 
 
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 184, 255);
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 60px;
+    height: fit-content;
+}
+
+.toggle label {
+    margin: 0px 15px 0px 15px;
+}
+
+.toggle-zen-mode {
+    margin-left: 200px;
+}
+
+.toggle-ld-mode {
+    margin-right: 200px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 29px;
+    height: 16px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(48, 48, 48);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider:before {
+    transform: translateX(13px);
+}

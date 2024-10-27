@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css';
+import TimerProgress from './TimerProgress';
 
 function Pomodoro() {
     // 25 | 5 seconds
     const studyDuration = 25 * 60;
     const breakDuration = 5 * 60;
 
-    const [ timeLeft, setTimeLeft ] = useState(studyDuration);
-    const [ isRunning, setIsRunning ] = useState(false);
-    const [ onBreak, setOnBreak ] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(studyDuration);
+    const [isRunning, setIsRunning] = useState(false);
+    const [onBreak, setOnBreak] = useState(false);
+    const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {
         let intervalId;
@@ -17,6 +19,7 @@ function Pomodoro() {
             intervalId = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     if (prevTime > 0) {
+                        setPercentage((timeLeft / studyDuration) * 100);
                         return prevTime - 1;
                     } else {
                         setOnBreak((prevOnBreak) => {
@@ -31,7 +34,7 @@ function Pomodoro() {
         }
 
         return () => clearInterval(intervalId);
-    }, [isRunning, breakDuration, studyDuration]);
+    }, [timeLeft, isRunning, breakDuration, studyDuration]);
 
     const handleStartStop = () => {
         setIsRunning((prev) => !prev);
@@ -41,6 +44,7 @@ function Pomodoro() {
         setIsRunning(false);
         setTimeLeft(studyDuration);
         setOnBreak(false);
+        setPercentage(100);
     };
 
     const formatTime = (seconds) => {
@@ -50,15 +54,20 @@ function Pomodoro() {
     };
 
     return (
-        <div className="timer">
+        <div className="timer-container">
+
+            <TimerProgress percentage={percentage} />
+
+            <div className="timer">
+                <h1 id='time'>{formatTime(timeLeft)}</h1>
+
+                <button onClick={handleStartStop} className='start-stop-button'>{isRunning ? 'Stop' : 'Start'}</button>
+                <button onClick={handleReset} className='reset-button'>Reset</button>
+            </div>
             <div className="timer-modes">
                 <button onClick={() => setOnBreak(false)} className={!onBreak ? 'timer-modes active' : ''}>Pomodoro</button>
                 <button onClick={() => setOnBreak(true)} className={onBreak ? 'timer-modes active' : ''}>Break</button>
             </div>
-            <h1>{formatTime(timeLeft)}</h1>
-
-            <button onClick={handleStartStop} className='start-stop-button'>{isRunning ? 'Stop' : 'Start'}</button>
-            <button onClick={handleReset} className='reset-button'>Reset</button>
         </div>
     );
 }
