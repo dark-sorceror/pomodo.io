@@ -1,11 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+    --blue: rgb(0, 157, 255);
+    --blue-shadow: rgb(0, 122, 197);
+    --green: rgb(0, 194, 129);
+    --green-shadow: rgb(0, 145, 96);
+    --purple: rgb(139, 108, 239);
+    --purple-shadow: rgb(114, 79, 230);
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
+a, span, h1, button {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
 .wrapper {
     background-color: white;
-
     transition: background-color 0.2s linear;
 }
 
@@ -179,25 +195,24 @@ li {
 }
 
 .start-stop-button {
-    padding: 10px;
-    margin-bottom: 5px;
-    border: none;
-    border-radius: 20px;
-    font-size: 30px;
-    font-weight: 600;
+    background-color: var(--purple);
+    border-radius: 10px;
     width: 100%;
-    background-color: rgb(160, 76, 255);
+    padding: 12px 0px;
+    color: black;
+    box-shadow: 0 7px 0px var(--purple-shadow);
+}
+
+.start-stop-button:active {
+    box-shadow: 0 2px 0px var(--purple-shadow);
 }
 
 .reset-button {
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 600;
-    width: 100%;
-    font-size: 20px;
-    background-color: rgba(128, 60, 206, 0.233);
-    width: 100px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .timer-modes {
@@ -291,3 +306,49 @@ li {
 input:checked+.slider:before {
     transform: translateX(13px);
 }
+
+.timer-progress {
+    position: absolute;
+    rotate: -90deg;
+    left: -78px;
+}
+
+.timer-progress-outline {
+    stroke: #e0e0e0;
+    fill: none;
+    stroke-width: 20;
+}
+
+.timer-progress-bar {
+    stroke: rgb(141, 82, 209);
+    fill: none;
+    stroke-width: 20;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.timer-progress-text {
+    rotate: 90deg;
+    z-index: 10;
+    position: relative;
+    top: -26px;
+    left: 115px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.button {
+    border: none;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+    transform: translateY(0);
+    box-shadow: 0 7px 0px inherit;
+    user-select: none;
+}
+
+/*rgb(228, 228, 228)*/
+
+.button:active {
+    transform: translateY(5px);
+    box-shadow: 0 2px 0px inherit;
+}
+
