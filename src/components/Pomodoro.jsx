@@ -1,75 +1,80 @@
+// Pomodoro.js
 import React, { useState, useEffect } from 'react';
-import '../styles/App.css';
 import TimerProgress from './TimerProgress';
 
 function Pomodoro() {
-    // 25 | 5 seconds
-    const studyDuration = 25 * 60;
-    const breakDuration = 5 * 60;
+  const studyDuration = 25 * 60;
+  const shortBreakDuration = 5 * 60;
+  const longBreakDuration = 15 * 60;
 
-    const [timeLeft, setTimeLeft] = useState(studyDuration);
-    const [isRunning, setIsRunning] = useState(false);
-    const [onBreak, setOnBreak] = useState(false);
-    const [percentage, setPercentage] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(studyDuration);
+  const [isRunning, setIsRunning] = useState(false);
+  const [cycleStage, setCycleStage] = useState(0);
+  const [percentage, setPercentage] = useState(100);
 
-    useEffect(() => {
-        let intervalId;
+  const stages = [
+    { duration: studyDuration, type: 'work' },
+    { duration: shortBreakDuration, type: 'shortBreak' },
+    { duration: studyDuration, type: 'work' },
+    { duration: shortBreakDuration, type: 'shortBreak' },
+    { duration: studyDuration, type: 'work' },
+    { duration: longBreakDuration, type: 'longBreak' },
+  ];
 
-        if (isRunning) {
-            intervalId = setInterval(() => {
-                setTimeLeft((prevTime) => {
-                    if (prevTime > 0) {
-                        setPercentage((timeLeft / studyDuration) * 100);
-                        return prevTime - 1;
-                    } else {
-                        setOnBreak((prevOnBreak) => {
-                            const newOnBreak = !prevOnBreak;
-                            setTimeLeft(newOnBreak ? breakDuration : studyDuration);
-                            return newOnBreak;
-                        });
-                        return 0;
-                    }
-                });
-            }, 1000);
-        }
+  useEffect(() => {
+    let intervalId;
+    if (isRunning) {
+      intervalId = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime > 0) {
+            setPercentage((prevTime / stages[cycleStage].duration) * 100);
+            return prevTime - 1;
+          } else {
+            const nextStage = (cycleStage + 1) % stages.length;
+            setCycleStage(nextStage);
+            setTimeLeft(stages[nextStage].duration);
+            return stages[nextStage].duration;
+          }
+        });
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [isRunning, cycleStage, stages]);
 
-        return () => clearInterval(intervalId);
-    }, [timeLeft, isRunning, breakDuration, studyDuration]);
+  const handleStartStop = () => {
+    setIsRunning((prev) => !prev);
+  };
 
-    const handleStartStop = () => {
-        setIsRunning((prev) => !prev);
-    };
+  const handleReset = () => {
+    setIsRunning(false);
+    setCycleStage(0);
+    setTimeLeft(studyDuration);
+    setPercentage(100);
+  };
 
-    const handleReset = () => {
-        setIsRunning(false);
-        setTimeLeft(studyDuration);
-        setOnBreak(false);
-        setPercentage(100);
-    };
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
 
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-    };
-
-    return (
-        <div className="timer-container">
-
-            <TimerProgress percentage={percentage} />
-
-            <div className="timer">
-                <h1 id='time'>{formatTime(timeLeft)}</h1>
-
-                <button onClick={handleStartStop} className='start-stop-button'>{isRunning ? 'Stop' : 'Start'}</button>
-                <button onClick={handleReset} className='reset-button'>Reset</button>
-            </div>
-            <div className="timer-modes">
-                <button onClick={() => setOnBreak(false)} className={!onBreak ? 'timer-modes active' : ''}>Pomodoro</button>
-                <button onClick={() => setOnBreak(true)} className={onBreak ? 'timer-modes active' : ''}>Break</button>
-            </div>
-        </div>
-    );
+  return (
+    <section className="timer-container">
+      <TimerProgress percentage={percentage} />
+      <div className="timer">
+        <h1 id="time">{formatTime(timeLeft)}</h1>
+        <button onClick={handleStartStop} className="start-stop-button">
+          {isRunning ? 'Stop' : 'Start'}
+        </button>
+        <button onClick={handleReset} className="reset-button">Reset</button>
+      </div>
+      <div className="timer-modes">
+        <button className={stages[cycleStage].type === 'work' ? 'active' : ''}>Pomodoro</button>
+        <button className={stages[cycleStage].type === 'shortBreak' ? 'active' : ''}>Short Break</button>
+        <button className={stages[cycleStage].type === 'longBreak' ? 'active' : ''}>Long Break</button>
+      </div>
+    </section>
+  );
 }
 
 export default Pomodoro;

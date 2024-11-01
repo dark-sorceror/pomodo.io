@@ -1,10 +1,11 @@
 import React from 'react';
-import Pomodoro from './components/Pomodoro';
+// import Pomodoro from './components/Pomodoro';
+import Home from './Pages/Home';
 
 function App() {
     return (
         <div className='App'>
-            <Pomodoro />
+            <Home />
         </div>
     );
 }

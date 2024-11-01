@@ -38,7 +38,7 @@ const TimerProgress = ({ percentage }) => {
 
             </svg>
             <div className="progress-text" id="progress-text" style={{ rotate:'90deg',
-            zIndex: '10', position:'relative', top: '-26px', left: '115px', fontWeight: '600'
+            zIndex: '10', position:'relative', top: '-26px', left: '115px', fontWeight: '600', color: 'white'
             }}>{Math.round(percentage, 3)}%</div>
         </div>
     );
