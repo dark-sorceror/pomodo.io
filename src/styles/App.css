@@ -1,314 +1,264 @@
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    * {
-        margin: 0;
-        padding: 0;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-    .wrapper {
-        background-color: white;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
 
-        transition: background-color 0.2s linear;
-    }
+.wrapper {
+    background-color: white;
 
-    .wrapper.dm {
-        background-color: #292c35;
-    }
+    transition: background-color 0.2s linear;
+}
 
-    .wrapper.dm .logo {
-        color: white;
-    }
+.a {
+    display: none;
+}
 
-    .wrapper.dm .timer {
-        background-color: #2e3036;
-        color: white;
-    }
+.btn:hover {
+    background-color: #dadada5d;
+}
 
-    .wrapper.dm .timer button {
-        color: white;
-    }
+.btn {
+    width: 48px;
+    height: 48px;
+    border: solid 1px transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: transparent;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+}
 
-    .a {
-        display: none;
-    }
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    background-image: url('../assets/zen-lbg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.5s ease, filter 0.5s ease;
+}
 
-    .btn:hover {
-        background-color: #dadada5d;
-    }
+.wrapper.dark-mode {
+    /*filter: brightness(0.7);*/
+    pointer-events: auto;
+    background-image: url('../assets/zen-dbg.PNG');
+}
 
+nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
 
-    .btn {
-        width: 48px;
-        height: 48px;
-        border: solid 1px transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        background-color: transparent;
-        position: relative;
-        transition: background-color 0.15s ease-in-out;
-    }
+.nav {
+    display: flex;
+    height: 100%;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+}
 
-    .wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        justify-items: center;
-        height: 100vh;
-        width: 100vw;
-        flex-direction: column;
-        background-color: rgb(246, 225, 255);
-        background-image: url('/assets/zen-bg.jpeg'); /* Your background image */
-        background-size: cover; /* Cover the entire background */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Prevent the image from repeating */
-        transition: background-color 0.5s ease, filter 0.5s ease; 
-    }
-    
-    .wrapper.dark-mode {
-        background-color: rgba(0, 0, 0, 0.5); 
-        filter: brightness(0.7); 
-        pointer-events: auto; 
-    }
+.logo {
+    display: flex;
+    background-image: url('../assets/logo.PNG');
+    background-size: contain;
+    rotate: -90deg;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-    nav {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
+.container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
 
-        height: 150px;
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
-    }
+.timer-interface {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .left,
-    .logo,
-    .right {
-        flex-grow: 1;
-        flex-basis: 0;
-        display: flex;
-        justify-content: center;
-    }
+.progress-circle {
+    position: absolute;
+    top: 205px;
+}
 
-    .left {
-        justify-content: left;
-    }
+.timer {
+    border-radius: 200px;
+    width: 350px;
+    height: 350px;
+    background-color: rgba(200, 173, 230, 0.548);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    z-index: 5;
+    margin-bottom: 70px;
+}
 
-    .right {
-        justify-content: right;
-    }
+.timer h1 {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
 
-    .logo {
-        font-size: 30px;
-        margin-top: 20px;
-    }
+.start-stop-button {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+    background-color: rgb(160, 76, 255);
+    box-shadow: 0 7px 0px rgb(120, 57, 192);
+}
 
-    .nav-bar {
-        display: flex;
-    }
+.reset-button {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgba(128, 60, 206, 0.233);
+    width: 100px;
+    box-shadow: 0 7px 0px rgba(128, 60, 206, 0.5);
+}
 
-    nav ul {
-        display: flex;
-        justify-content: space-between;
-        width: 250px;
-        background-color: lightgrey;
-        padding: 10px 15px;
-        margin-right: 40px;
-        border-radius: 10px;
-        align-items: center;
-    }
+.button {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    transform: translateY(0);
+    user-select: none;
+}
+/*rgb(228, 228, 228)*/
+.button:active {
+    transform: translateY(5px);
+    box-shadow: 0 2px 0px inherit;
+}
 
-    li {
-        list-style: none;
-    }
+.timer-modes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .container {
-        display: flex;
-        flex: 1;
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+.timer-modes button {
 
+    width: 120px;
+    height: 50px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: rgb(241, 184, 255);
+    box-shadow: 0 7px 0px rgb(169, 129, 179);
+}
 
-    .dragon {
-        margin-top: 160px;
-        
-    }
+.timer-modes button:not(:last-child) {
+    margin-right: 10px;
+}
 
+.timer-modes button.active {
+    background-color: rgb(141, 82, 209);
+    box-shadow: 0 7px 0px rgba(128, 60, 206);
+}
 
-    .menu {
-        display: flex;
-        width: 20%;
-    }
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    /* z-index: 1; */
+}
 
-    .menu ul {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        background-color: lightgrey;
-        height: fit-content;
-        padding: 10px 15px;
-        border-radius: 10px;
-    }
+.toggle {
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 184, 255);
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-bottom: 60px;
+    height: fit-content;
+}
 
-    .timer-container {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
+.toggle label {
+    margin: 0px 15px 0px 15px;
+}
 
-    .timer {
-        border-radius: 200px;
-        width: 300px;
-        height: 300px;
-        margin-right: 100px;
-        background-color: rgba(200, 173, 230, 0.548);
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        padding: 20px;
-        z-index: 5;
-    }
+.toggle-zen-mode {
+    margin-left: 200px;
+}
 
-    .timer-modes {
-        display: flex;
-        flex-direction: column;
-    }
+.toggle-ld-mode {
+    margin-right: 200px;
+}
 
-    .timer h1 {
-        font-size: 80px;
-        margin-bottom: 10px;
-    }
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 29px;
+    height: 16px;
+}
 
-    .timer-modes button.active {
-        background-color: rgb(141, 82, 209);
-    }
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
-    .start-stop-button {
-        padding: 10px;
-        margin-bottom: 5px;
-        border: none;
-        border-radius: 20px;
-        font-size: 30px;
-        font-weight: 600;
-        width: 100%;
-        background-color: rgb(160, 76, 255);
-        cursor: pointer;
-    }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(48, 48, 48);
+    transition: .4s;
+    border-radius: 34px;
+}
 
-    .reset-button {
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-        font-weight: 600;
-        width: 100%;
-        font-size: 20px;
-        background-color: rgba(128, 60, 206, 0.233);
-        width: 100px;
-        cursor: pointer;
-    }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
 
-    .timer-modes {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 5px;
-    }
-
-    .timer-modes button {
-        flex: 1;
-        padding: 10px;
-        height: fit-content;
-        width: 115px;
-        border: none;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 16px;
-        background-color: rgb(241, 184, 255);
-        margin-bottom: 5px;
-    }
-
-    .timer-modes button:not(:last-child) {
-        margin-right: 10px;
-    }
-
-
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        height: 80px;
-        /* z-index: 1; */
-    }
-
-    .toggle {
-        display: flex;
-        align-items: center;
-        background-color: rgb(241, 184, 255);
-        padding: 10px 10px;
-        border-radius: 10px;
-        margin-bottom: 60px;
-        height: fit-content;
-    }
-
-    .toggle label {
-        margin: 0px 15px 0px 15px;
-    }
-
-    .toggle-zen-mode {
-        margin-left: 200px;
-    }
-
-    .toggle-ld-mode {
-        margin-right: 200px;
-    }
-
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 29px;
-        height: 16px;
-    }
-
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgb(48, 48, 48);
-        transition: .4s;
-        border-radius: 34px;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 10px;
-        width: 10px;
-        left: 3px;
-        bottom: 3px;
-        background-color: white;
-        transition: .4s;
-        border-radius: 50%;
-    }
-
-    input:checked+.slider:before {
-        transform: translateX(13px);
-    }
+input:checked+.slider:before {
+    transform: translateX(13px);
+}
