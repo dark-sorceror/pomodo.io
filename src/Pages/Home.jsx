@@ -2,8 +2,12 @@ import React from 'react';
 import Pomodoro from '../components/Pomodoro';
 import { useTheme } from '../components/ThemeMode'
 
-const ZenModeToggle = () => (
-    <div className="toggle toggle-zen-mode">
+const ZenModeToggle = ({themeMode}) => (
+    
+    <div className="toggle toggle-zen-mode"
+        style={{
+            backgroundColor: themeMode ? 'rgb(241, 184, 255)' : 'rgb(190,224,182)',
+        }}>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -51,7 +55,10 @@ const ZenModeToggle = () => (
 );
 
 const LightDarkModeToggle = ({ onToggle, themeMode }) => (
-    <div className="toggle toggle-ld-mode">
+    <div className="toggle toggle-ld-mode"
+    style={{
+        backgroundColor: themeMode ? 'rgb(241, 184, 255)' : 'rgb(190,224,182)',
+    }}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="dm-btn-sun"
             id="dm-btn-sun">
@@ -82,6 +89,8 @@ const Home = () => {
 
     return (
         <div className={`wrapper ${themeMode ? 'dark-mode' : ''}`}>
+            <div className="background"></div> 
+            <div className="background background-dark"></div>
             <nav>
                 <div className="nav">
                     <div className="logo"></div>
@@ -91,7 +100,7 @@ const Home = () => {
                 <Pomodoro />
             </main>
             <footer className="footer">
-                <ZenModeToggle />
+                <ZenModeToggle themeMode={themeMode} />
                 <LightDarkModeToggle onToggle={toggleMode} themeMode={themeMode} />
             </footer>
         </div>

@@ -28,7 +28,7 @@ const TimerProgress = ({ percentage }) => {
                     cy={250}
                 />
                 <circle
-                    stroke={themeMode ? "rgb(141, 82, 209)" : "rgb(91, 196, 65)"}
+                    stroke={themeMode ? "rgb(141, 82, 209)" : "rgb(105, 219, 77)"}
                     fill="none"
                     strokeWidth={strokeWidth}
                     r={normalizedRadius}

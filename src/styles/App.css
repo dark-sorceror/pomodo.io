@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -44,18 +42,46 @@
     height: 100vh;
     width: 100vw;
     flex-direction: column;
-    background-image: url('../assets/zen-lbg.PNG');
+    position: relative; 
+    overflow: hidden;
+}
+
+.wrapper .background {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/zen-lbg.PNG'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: background-color 0.5s ease, filter 0.5s ease;
+    transition: opacity 0.5s ease; 
+    opacity: 1; 
 }
 
-.wrapper.dark-mode {
-    /*filter: brightness(0.7);*/
-    pointer-events: auto;
-    background-image: url('../assets/zen-dbg.PNG');
+.wrapper.dark-mode .background {
+    opacity: 0; 
 }
+
+.wrapper .background-dark {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/zen-dbg.PNG'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.5s ease; 
+    opacity: 0; 
+}
+
+.wrapper.dark-mode .background-dark {
+    opacity: 1; 
+}
+
 
 nav {
     display: flex;
@@ -106,11 +132,16 @@ nav {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0 auto;
+    position: absolute;
 }
 
 .progress-circle {
     position: absolute;
-    top: 205px;
+    /* top: 10px; */
+    margin: 0 auto;
+    /* margin-top: -50px; */
+    margin-bottom: 120px;
 }
 
 .timer {
@@ -139,8 +170,8 @@ nav {
     font-size: 30px;
     font-weight: 700;
     width: 100%;
-    background-color: rgb(160, 76, 255);
-    box-shadow: 0 7px 0px rgb(120, 57, 192);
+    /* background-color: rgb(160, 76, 255); */
+    /* box-shadow: 0 7px 0px rgb(120, 57, 192); */
 }
 
 .reset-button {
@@ -156,7 +187,7 @@ nav {
     padding: 10px;
     cursor: pointer;
     border: none;
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
     transform: translateY(0);
     user-select: none;
 }
@@ -203,11 +234,12 @@ nav {
 .toggle {
     display: flex;
     align-items: center;
-    background-color: rgb(241, 184, 255);
+    /* background-color: rgb(241, 184, 255); */
     padding: 10px 10px;
     border-radius: 10px;
     margin-bottom: 60px;
     height: fit-content;
+    z-index: 10;
 }
 
 .toggle label {
