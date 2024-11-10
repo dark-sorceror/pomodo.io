@@ -1,0 +1,120 @@
+@import '../../styles/App.css';
+
+.dark-mode .start-stop-button, .dark-mode .reset-button {
+    background-color: var(--dark-button-bg);
+    box-shadow: var(--dark-button-shadow);
+}
+
+.dark-mode .timer-modes button {
+    background-color: var(--dark-inactive-button-bg);
+    box-shadow: var(--dark-inactive-button-shadow);
+}
+
+.dark-mode button.active {
+    background-color: var(--dark-active-button-bg);
+    box-shadow: var(--dark-active-button-shadow);
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.timer-interface {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.progress-circle {
+    position: absolute;
+    /* top: 10px; */
+    margin: 0 auto;
+    /* margin-top: -50px; */
+    margin-bottom: 120px;
+}
+
+.timer {
+    border-radius: 200px;
+    width: 350px;
+    height: 350px;
+    background-color: rgba(200, 173, 230, 0.548);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    z-index: 5;
+    margin-bottom: 70px;
+}
+
+.timer h1 {
+    font-size: 80px;
+    margin-bottom: 10px;
+}
+
+.start-stop-button, .reset-button {
+    background-color: var(--light-button-bg); 
+    box-shadow: 0 7px 0px var(--light-button-shadow); 
+}
+
+.start-stop-button {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.reset-button {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    width: 100px;
+}
+
+.button {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
+    transform: translateY(0);
+    user-select: none;
+}
+
+.button:active {
+    transform: translateY(5px);
+    box-shadow: 0 2px 0px inherit;
+}
+
+.timer-modes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-modes button {
+    width: 120px;
+    height: 50px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: var(--light-inactive-button-bg);
+    box-shadow: 0 7px 0px var(--light-inactive-button-shadow);
+}
+
+.timer-modes button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.timer-modes button.active {
+    background-color: var(--light-active-button-bg);
+    box-shadow: 0 7px 0px var(--light-active-button-shadow);
+}

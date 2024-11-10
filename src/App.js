@@ -1,14 +1,16 @@
 import React from 'react';
-import Home from './Pages/Home';
-import { ThemeMode } from './components/ThemeMode';
 
-import './styles/App.css'
+import Home from './pages/Home';
+
+import { ThemeProvider } from './context/Theme';
+
+import './styles/App.css';
 
 function App() {
     return (
-        <ThemeMode>
+        <ThemeProvider>
             <Home />
-        </ThemeMode>
+        </ThemeProvider>
     );
 }
 

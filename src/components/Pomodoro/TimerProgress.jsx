@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from './ThemeMode';
+import { useTheme } from '../../context/Theme/ThemeMode';
 
 const TimerProgress = ({ percentage }) => {
     const radius = 215;
