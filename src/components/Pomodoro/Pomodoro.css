@@ -1,16 +1,17 @@
 @import '../../styles/App.css';
 
-.dark-mode .start-stop-button, .dark-mode .reset-button {
+.wrapper.dark-mode .start-stop-button,
+.dark-mode .reset-button {
     background-color: var(--dark-button-bg);
     box-shadow: var(--dark-button-shadow);
 }
 
-.dark-mode .timer-modes button {
+.wrapper.dark-mode .timer-modes button {
     background-color: var(--dark-inactive-button-bg);
     box-shadow: var(--dark-inactive-button-shadow);
 }
 
-.dark-mode button.active {
+.wrapper.dark-mode button.active {
     background-color: var(--dark-active-button-bg);
     box-shadow: var(--dark-active-button-shadow);
 }
@@ -59,9 +60,10 @@
     margin-bottom: 10px;
 }
 
-.start-stop-button, .reset-button {
-    background-color: var(--light-button-bg); 
-    box-shadow: 0 7px 0px var(--light-button-shadow); 
+.start-stop-button,
+.reset-button {
+    background-color: var(--light-button-bg);
+    box-shadow: 0 7px 0px var(--light-button-shadow);
 }
 
 .start-stop-button {

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import TimerProgress from './TimerProgress';
 
-const studyDuration = 3; // 25 * 60
-const shortBreakDuration = 3; // 5 * 60
-const longBreakDuration = 3; // 15 * 60
+import './Pomodoro.css';
+
+const studyDuration = 25 * 60;
+const shortBreakDuration = 5 * 60;
+const longBreakDuration = 15 * 60;
 
 const pomoSequence = ["work", "shortBreak", "work", "shortBreak", "work", "longBreak"];
 

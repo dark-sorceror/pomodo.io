@@ -13,10 +13,10 @@ const TimerProgress = ({ percentage }) => {
 
     return (
         <div className="progress-circle" style={{
-            
+
             rotate: '-90deg',
             display: 'flex'
-            
+
         }}>
             <svg width="500px" height="500px">
                 <circle
