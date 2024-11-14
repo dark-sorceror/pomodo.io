@@ -1,17 +1,19 @@
 import React from 'react';
-
 import Home from './Pages/Home';
 
 import { ThemeProvider } from './context/Theme';
 
-import './styles/App.css';
+import './App.css';
 
 function App() {
-    return (
-        <ThemeProvider>
+
+  return (
+    <>
+      <ThemeProvider>
             <Home />
         </ThemeProvider>
-    );
+    </>
+  )
 }
 
-export default App;
+export default App
