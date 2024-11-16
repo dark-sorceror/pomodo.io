@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { getTodaysDate } from '../services/getDate';
 
 import { Pomodoro } from '../components/Pomodoro';
 import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
@@ -11,12 +13,13 @@ const Home = () => {
     const { themeMode } = useTheme();
 
     return (
-        <div className={`wrapper ${themeMode == 'dark' ? 'dark-mode' : ''}`}>
+        <div className={ `wrapper ${themeMode == 'dark' ? 'dark-mode' : '' }`}>
             <div className="background"></div>
             <div className="background background-dark"></div>
             <nav>
                 <div className="nav">
                     <div className="logo"></div>
+                    <span className="time">{ getTodaysDate() }</span>
                 </div>
             </nav>
             <main className="container">

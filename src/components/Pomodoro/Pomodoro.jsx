@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import { getPageVisibility } from '../../hooks/visibility';
 
+import { formatCountdownTime } from '../../services/formatCountdownTime';
+import { formatTime } from '../../services/formatTime';
+
 import TimerProgress from './TimerProgress';
 
 import './Pomodoro.css';
@@ -76,19 +79,13 @@ function Pomodoro() {
         setPercentage(100);
     };
 
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-
-        return `${ minutes }:${ remainingSeconds < 10 ? '0' : '' }${ remainingSeconds }`;
-    };
-
     return (
         <section className="timer-container">
             <div className="timer-interface">
                 <TimerProgress percentage={ percentage } />
                 <div className="timer">
-                    <h1 id="time">{ formatTime(timeLeft) }</h1>
+                    <span className="end-time">{ formatTime(durations[pomoSequence[cycleStage]]) }</span>
+                    <h1 id="time">{ formatCountdownTime(timeLeft) }</h1>
                     <button
                         onClick={() => handleStartStop()}
                         className="start-stop-button button"

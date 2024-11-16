@@ -82,6 +82,11 @@
     margin-bottom: 70px;
 }
 
+.end-time {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.363);
+}
+
 .timer h1 {
     font-size: 80px;
     margin-bottom: 10px;
