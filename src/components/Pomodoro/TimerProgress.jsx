@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from '../../context/Theme/ThemeMode';
 
 const TimerProgress = ({ percentage }) => {
     const radius = 215;
@@ -7,41 +6,27 @@ const TimerProgress = ({ percentage }) => {
     const normalizedRadius = radius - strokeWidth / 2;
     const circumference = normalizedRadius * 2 * Math.PI;
 
-    const offset = circumference - percentage / 100 * circumference;
-
-    const { themeMode } = useTheme();
+    const offset = circumference - (percentage / 100) * circumference;
 
     return (
-        <div className="progress-circle" style={{
-
-            rotate: '-90deg',
-            display: 'flex'
-
-        }}>
-            <svg width="500px" height="500px">
+        <div className="progress-circle">
+            <svg>
                 <circle
-                    stroke="transparent"
-                    fill="none"
-                    strokeWidth={strokeWidth}
-                    r={normalizedRadius}
+                    className='container-area'
+                    strokeWidth={ strokeWidth }
+                    r={ normalizedRadius }
                     cx={250}
                     cy={250}
                 />
                 <circle
-                    stroke={themeMode ? "rgb(141, 82, 209)" : "rgb(105, 219, 77)"}
-                    fill="none"
-                    strokeWidth={strokeWidth}
-                    r={normalizedRadius}
+                    className='filled-area'
+                    strokeWidth={ strokeWidth }
+                    r={ normalizedRadius }
                     cx={250}
                     cy={250}
-                    strokeDasharray={circumference}
-                    strokeDashoffset={-offset}
-                    style={{
-                        transition: 'stroke-dashoffset 0.5s ease',
-                    }}
-                    strokeLinecap="round"
+                    strokeDasharray={ circumference }
+                    strokeDashoffset={ -offset }
                 />
-
             </svg>
         </div>
     );

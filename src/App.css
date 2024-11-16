@@ -3,19 +3,25 @@
 :root {
     --light-background: url('./assets/zen-lbg.PNG');
     --light-text: #333;
-    --light-button-bg: #69db4d;
-    --light-button-shadow: 0 7px 0px rgb(91, 196, 65);
-    --light-active-button-bg: #7bd964;
+
+    --light-button-bg: rgb(105, 219, 77);
     --light-inactive-button-bg: rgb(190, 224, 182);
-    --light-active-button-shadow: 0 7px 0px rgb(91, 196, 65);
+
+    --light-button-shadow: 0 7px 0px rgb(91, 196, 65);
     --light-inactive-button-shadow: 0 7px 0px rgb(135, 219, 114);
+
+    --light-pressed-button-shadow: 0 2px 0px rgb(91, 196, 65);
+    --light-inactive-pressed-button-shadow: 0 2px 0px rgb(135, 219, 114);
 
     --dark-background: url('./assets/zen-dbg.PNG'); 
     --dark-text: #eee;
+
     --dark-button-bg: rgb(160, 76, 255);
-    --dark-button-shadow: 0 7px 0px rgb(120, 57, 192);
-    --dark-active-button-bg: rgb(141, 82, 209);
     --dark-inactive-button-bg: rgb(241, 184, 255);
-    --dark-active-button-shadow: 0 7px 0px rgba(128, 60, 206);
+
+    --dark-button-shadow: 0 7px 0px rgb(120, 57, 192);
     --dark-inactive-button-shadow: 0 7px 0px rgb(169, 129, 179);
+
+    --dark-pressed-button-shadow: 0 2px 0px rgb(120, 57, 192);
+    --dark-inactive-pressed-button-shadow: 0 2px 0px rgb(169, 129, 179);
 }

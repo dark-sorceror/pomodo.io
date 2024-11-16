@@ -18,10 +18,10 @@ const durations =
 };
 
 function Pomodoro() {
-    const [timeLeft, setTimeLeft] = useState(studyDuration);
-    const [isRunning, setIsRunning] = useState(false);
-    const [cycleStage, setCycleStage] = useState(0);
-    const [percentage, setPercentage] = useState(100);
+    const [ timeLeft, setTimeLeft ] = useState(studyDuration);
+    const [ isRunning, setIsRunning ] = useState(false);
+    const [ cycleStage, setCycleStage ] = useState(0);
+    const [ percentage, setPercentage ] = useState(100);
 
     useEffect(() => {
         let intervalId;
@@ -30,17 +30,15 @@ function Pomodoro() {
             intervalId = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     setPercentage(((prevTime - 1) / durations[pomoSequence[cycleStage]]) * 100);
-                    if (prevTime > 0) {
-                        return prevTime - 1;
-                    } else {
+
+                    if (prevTime > 0) return prevTime - 1;
+                    else {
                         let nextStage;
 
-                        if (pomoSequence.length > 6) {
-                            pomoSequence.shift();
+                        if (pomoSequence > 6) {
+                            pomoSequence.slice(0, 5);
                             nextStage = (cycleStage) % pomoSequence.length;
-                        } else {
-                            nextStage = (cycleStage + 1) % pomoSequence.length;
-                        }
+                        } else nextStage = (cycleStage + 1) % pomoSequence.length;
 
                         setCycleStage(nextStage);
                         setTimeLeft(durations[pomoSequence[nextStage]]);
@@ -54,20 +52,16 @@ function Pomodoro() {
         }
 
         return () => clearInterval(intervalId);
-    }, [isRunning, cycleStage]);
+    }, [ isRunning, cycleStage ]);
 
-    const handleStartStop = () => {
-        setIsRunning((prev) => !prev);
-    };
+    const handleStartStop = () => setIsRunning((prev) => !prev);
 
     const handleModified = (mode) => {
         handleReset();
 
-        if (pomoSequence > 6) {
-            pomoSequence.shift();
-        }
+        pomoSequence.push(mode);
 
-        pomoSequence.unshift(mode);
+        setCycleStage(pomoSequence.length - 1);
     }
 
     const handleReset = () => {
@@ -80,39 +74,40 @@ function Pomodoro() {
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
-        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+
+        return `${ minutes }:${ remainingSeconds < 10 ? '0' : '' }${ remainingSeconds }`;
     };
 
     return (
         <section className="timer-container">
             <div className="timer-interface">
-                <TimerProgress percentage={percentage} />
+                <TimerProgress percentage={ percentage } />
                 <div className="timer">
-                    <h1 id="time">{formatTime(timeLeft)}</h1>
+                    <h1 id="time">{ formatTime(timeLeft) }</h1>
                     <button
                         onClick={() => handleStartStop()}
                         className="start-stop-button button"
                     >
-                        {isRunning ? 'Stop' : 'Start'}
+                        { isRunning ? 'Stop' : 'Start' }
                     </button>
                     <button
-                        onClick={() => handleReset()}
+                        onClick={ () => handleReset() }
                         className="reset-button button"
                     >Reset</button>
                 </div>
                 <div className="timer-modes">
                     <button
-                        className={pomoSequence[cycleStage] === 'work' ? 'active button' : 'button'}
-                        onClick={() => handleModified('work')}
+                        className={ pomoSequence[cycleStage] === 'work' ? 'active button' : 'button' }
+                        onClick={ () => handleModified('work') }
                     >Pomodoro</button>
                     <button
-                        className={pomoSequence[cycleStage] === 'shortBreak' ? 'active button' : 'button'}
-                        onClick={() => handleModified('shortBreak')}
+                        className={ pomoSequence[cycleStage] === 'shortBreak' ? 'active button' : 'button' }
+                        onClick={ () => handleModified('shortBreak') }
                     >Short Break</button>
 
                     <button
-                        className={pomoSequence[cycleStage] === 'longBreak' ? 'active button' : 'button'}
-                        onClick={() => handleModified('longBreak')}
+                        className={ pomoSequence[cycleStage] === 'longBreak' ? 'active button' : 'button' }
+                        onClick={ () => handleModified('longBreak') }
                     >Long Break</button>
                 </div>
 

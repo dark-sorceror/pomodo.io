@@ -11,8 +11,8 @@ const Home = () => {
     const { themeMode } = useTheme();
 
     return (
-        <div className={`wrapper ${themeMode ? 'dark-mode' : ''}`}>
-            <div className="background"></div> 
+        <div className={`wrapper ${themeMode == 'dark' ? 'dark-mode' : ''}`}>
+            <div className="background"></div>
             <div className="background background-dark"></div>
             <nav>
                 <div className="nav">

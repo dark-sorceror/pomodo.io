@@ -1,19 +1,29 @@
 @import '../../App.css';
 
+.wrapper.dark-mode .filled-area {
+    stroke: rgb(141, 82, 209);
+}
+
 .wrapper.dark-mode .start-stop-button,
-.dark-mode .reset-button {
+.wrapper.dark-mode .reset-button, 
+.wrapper.dark-mode .timer-modes button.active {
     background-color: var(--dark-button-bg);
     box-shadow: var(--dark-button-shadow);
 }
 
-.wrapper.dark-mode .timer-modes button {
+.wrapper.dark-mode .start-stop-button:active,
+.wrapper.dark-mode .reset-button:active, 
+.wrapper.dark-mode .timer-modes button.active:active {
+    box-shadow: var(--dark-pressed-button-shadow);
+}
+
+.wrapper.dark-mode .timer-modes button:not(.active) {
     background-color: var(--dark-inactive-button-bg);
     box-shadow: var(--dark-inactive-button-shadow);
 }
 
-.wrapper.dark-mode button.active {
-    background-color: var(--dark-active-button-bg);
-    box-shadow: var(--dark-active-button-shadow);
+.wrapper.dark-mode .timer-modes button:not(.active):active {
+    box-shadow: var(--dark-inactive-pressed-button-shadow);
 }
 
 .timer-container {
@@ -35,10 +45,27 @@
 
 .progress-circle {
     position: absolute;
-    /* top: 10px; */
     margin: 0 auto;
-    /* margin-top: -50px; */
     margin-bottom: 120px;
+    rotate: -90deg;
+    display: flex;
+}
+
+.progress-circle svg {
+    width: 500px;
+    height: 500px;
+}
+
+.container-area {
+    stroke: transparent;
+    fill: none;
+}
+
+.filled-area {
+    stroke: rgb(105, 219, 77);
+    fill: none;
+    transition: stroke-dashoffset 0.5s ease;
+    stroke-linecap: round;
 }
 
 .timer {
@@ -60,10 +87,30 @@
     margin-bottom: 10px;
 }
 
+.button {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.1s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transform: translateY(0);
+    user-select: none;
+}
+
+.button:active {
+    transform: translateY(5px);
+}
+
 .start-stop-button,
-.reset-button {
+.reset-button,
+.timer-modes button.active {
     background-color: var(--light-button-bg);
-    box-shadow: 0 7px 0px var(--light-button-shadow);
+    box-shadow: var(--light-button-shadow);
+}
+
+.start-stop-button:active,
+.reset-button:active,
+.timer-modes button.active:active {
+    box-shadow: var(--light-pressed-button-shadow);
 }
 
 .start-stop-button {
@@ -82,20 +129,6 @@
     width: 100px;
 }
 
-.button {
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.1s ease, box-shadow 0.1s ease;
-    transform: translateY(0);
-    user-select: none;
-}
-
-.button:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px 0px inherit;
-}
-
 .timer-modes {
     display: flex;
     justify-content: center;
@@ -109,14 +142,18 @@
     font-weight: 600;
     font-size: 16px;
     background-color: var(--light-inactive-button-bg);
-    box-shadow: 0 7px 0px var(--light-inactive-button-shadow);
+    box-shadow: var(--light-inactive-button-shadow);
+}
+
+.timer-modes button:not(.active) {
+    background-color: var(--light-inactive-button-bg);
+    box-shadow: var(--light-inactive-button-shadow);
+}
+
+.timer-modes button:active:not(.active) {
+    box-shadow: var(--light-inactive-pressed-button-shadow);
 }
 
 .timer-modes button:not(:last-child) {
     margin-right: 10px;
-}
-
-.timer-modes button.active {
-    background-color: var(--light-active-button-bg);
-    box-shadow: 0 7px 0px var(--light-active-button-shadow);
 }
