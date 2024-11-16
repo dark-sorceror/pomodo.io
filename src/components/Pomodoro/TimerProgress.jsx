@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TimerProgress = ({ percentage }) => {
-    const radius = 215;
+    const radius = 240;
     const strokeWidth = 20;
     const normalizedRadius = radius - strokeWidth / 2;
     const circumference = normalizedRadius * 2 * Math.PI;

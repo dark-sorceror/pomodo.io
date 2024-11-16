@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { getPageVisibility } from '../../hooks/visibility';
+
 import TimerProgress from './TimerProgress';
 
 import './Pomodoro.css';
@@ -23,10 +25,12 @@ function Pomodoro() {
     const [ cycleStage, setCycleStage ] = useState(0);
     const [ percentage, setPercentage ] = useState(100);
 
+    const isVisible = getPageVisibility();
+    
     useEffect(() => {
         let intervalId;
 
-        if (isRunning) {
+        if (isVisible && isRunning) {
             intervalId = setInterval(() => {
                 setTimeLeft((prevTime) => {
                     setPercentage(((prevTime - 1) / durations[pomoSequence[cycleStage]]) * 100);
@@ -52,7 +56,7 @@ function Pomodoro() {
         }
 
         return () => clearInterval(intervalId);
-    }, [ isRunning, cycleStage ]);
+    }, [ isRunning, cycleStage, isVisible ]);
 
     const handleStartStop = () => setIsRunning((prev) => !prev);
 
@@ -61,6 +65,7 @@ function Pomodoro() {
 
         pomoSequence.push(mode);
 
+        setTimeLeft(durations[pomoSequence[pomoSequence.length - 1]]);
         setCycleStage(pomoSequence.length - 1);
     }
 

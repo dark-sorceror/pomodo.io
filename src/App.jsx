@@ -4,14 +4,14 @@ import Home from './pages/Home';
 
 import { ThemeProvider } from './context/Theme';
 
-import './App.css';
+import './styles/App.css';
 
 function App() {
     return (
         <ThemeProvider>
             <Home />
         </ThemeProvider>
-    )
+    );
 }
 
-export default App
+export default App;

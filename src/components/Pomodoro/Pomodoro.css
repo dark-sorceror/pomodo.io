@@ -1,4 +1,4 @@
-@import '../../App.css';
+@import '../../styles/App.css';
 
 .wrapper.dark-mode .filled-area {
     stroke: rgb(141, 82, 209);
@@ -64,14 +64,14 @@
 .filled-area {
     stroke: rgb(105, 219, 77);
     fill: none;
-    transition: stroke-dashoffset 0.5s ease;
+    transition: stroke-dashoffset 0.5s ease, stroke 0.2s ease;
     stroke-linecap: round;
 }
 
 .timer {
-    border-radius: 200px;
-    width: 350px;
-    height: 350px;
+    border-radius: 250px;
+    width: 400px;
+    height: 400px;
     background-color: rgba(200, 173, 230, 0.548);
     display: flex;
     align-items: center;
@@ -91,7 +91,7 @@
     padding: 10px;
     cursor: pointer;
     border: none;
-    transition: background-color 0.1s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     transform: translateY(0);
     user-select: none;
 }
