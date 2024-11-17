@@ -17,11 +17,13 @@ const sendResponse = (res, statusCode, data,) => {
                     success: false,
                     message: "Bad Request!",
                     error: data,
+                    errorCode: 'BAD_REQUEST'
                 });
             } else {
                 return res.status(statusCode).json({
                     success: false,
                     message: "Bad Request!",
+                    errorCode: 'BAD_REQUEST'
                 });
             }
         case 401:

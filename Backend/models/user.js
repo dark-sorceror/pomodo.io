@@ -9,13 +9,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-    },
-    xP: {
-        type: String,
+        match: [/\S+@\S+\.\S+/, 'Please use a valid email address']
     },
     password: {
         type: String,
         required: true,
+        minlength: 8
     },
     role: {
         type: String,
@@ -25,6 +24,9 @@ const userSchema = new mongoose.Schema({
     dateJoined: {
         type: Date,
         default: Date.now,
+    },
+    xP: {
+        type: String,
     },
 });
 

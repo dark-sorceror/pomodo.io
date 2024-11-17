@@ -4,74 +4,69 @@ const { sendResponse } = require("../utils/responseHandler");
 const User = require("../models/user")
 
 const register = async (req, res) => {
-  try {
-    const { name, password, email, confirmPassword } = req.body;
-    
-    if(password !== confirmPassword){
-      sendResponse(res, 401);
+    try {
+        const { name, password, email, confirmPassword } = req.body;
+
+        if (password !== confirmPassword) {
+            sendResponse(res, 401);
+        }
+
+        const encryptedPassword = await bcrypt.hash(password, 10);
+
+        await User.create({
+            name: name,
+            password: encryptedPassword,
+            email,
+        });
+
+        sendResponse(res, 201);
+    } catch (error) {
+        sendResponse(res, 500, error);
     }
-    const encryptedPassword = bcrypt.hashSync(password, 10, (err, hash) => {
-      if (!err) {
-        return hash;
-      } else {
-        sendResponse(res, 400, err);
-      }
-    });
-
-    await User.create({
-        name: name,
-        password: encryptedPassword,
-        email,
-    });
-
-    sendResponse(res, 201);
-  } catch (error) {
-    sendResponse(res, 500, error);
-  }
 };
 
 const login = async (req, res) => {
-  try {
-    let user = null;
-    const { email, password } = req.body;
-  
-    // If User Enters Email
-    if (email) {
-      user = await User.findOne({ email:email });
-    }
+    try {
+        let user = null;
+        const { email, password } = req.body;
 
-    if (user === null) {
-      sendResponse(res, 404);
-    } else {
-      if (bcrypt.compareSync(password, user.password)) {
-        // Generate JWT Token
-        const userToken = jwt.sign(
-          {
-            id: user.id,
-            email: user.email,
-            role: user.role,
-          },
-          process.env.JWT_SECRET,
-          {
-            expiresIn: "30d",
-          }
-        );
+        // If User Enters Email
+        if (email) {
+            user = await User.findOne({ email: email });
+        }
 
-        // Send User Data
-        sendResponse(res, 200, {
-          user,
-          token: userToken,
-        });
-      } else {
-        sendResponse(res, 405);
-      }
+        if (!user || !await bcrypt.compare(password, user.password)) {
+            sendResponse(res, 404);
+        } else {
+            if (bcrypt.compareSync(password, user.password)) {
+                // Generate JWT Token
+                const userToken = jwt.sign(
+                    {
+                        id: user.id,
+                        email: user.email,
+                        role: user.role,
+                    },
+                    process.env.JWT_SECRET,
+                    {
+                        expiresIn: "30d",
+                    }
+                );
+
+                // Send User Data
+                sendResponse(res, 200, {
+                    user,
+                    token: userToken,
+                });
+            } else {
+                sendResponse(res, 405);
+            }
+        }
+    } catch (error) {
+        sendResponse(res, 500, error);
     }
-  } catch (error) {
-    sendResponse(res, 500, error);
-  }
 };
 
 module.exports = {
-  register,
-  login,
+    register,
+    login,
 };

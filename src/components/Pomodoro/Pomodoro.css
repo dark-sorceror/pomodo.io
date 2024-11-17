@@ -5,14 +5,12 @@
 }
 
 .wrapper.dark-mode .start-stop-button,
-.wrapper.dark-mode .reset-button, 
 .wrapper.dark-mode .timer-modes button.active {
     background-color: var(--dark-button-bg);
     box-shadow: var(--dark-button-shadow);
 }
 
 .wrapper.dark-mode .start-stop-button:active,
-.wrapper.dark-mode .reset-button:active, 
 .wrapper.dark-mode .timer-modes button.active:active {
     box-shadow: var(--dark-pressed-button-shadow);
 }
@@ -106,14 +104,12 @@
 }
 
 .start-stop-button,
-.reset-button,
 .timer-modes button.active {
     background-color: var(--light-button-bg);
     box-shadow: var(--light-button-shadow);
 }
 
 .start-stop-button:active,
-.reset-button:active,
 .timer-modes button.active:active {
     box-shadow: var(--light-pressed-button-shadow);
 }
@@ -131,7 +127,21 @@
     border-radius: 10px;
     font-weight: 600;
     font-size: 20px;
-    width: 100px;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.096);
+    box-shadow: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.reset-button:hover {
+    background-color: rgba(0, 0, 0, 0.196);
 }
 
 .timer-modes {
