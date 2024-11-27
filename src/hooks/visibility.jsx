@@ -22,7 +22,7 @@ export function getPageVisibility() {
         document.addEventListener(getBrowserVisibilityProp(), onVisibilityChange, false);
 
         return () => document.removeEventListener(getBrowserVisibilityProp(), onVisibilityChange);
-    })
+    },[])
 
     return isVisible;
 }

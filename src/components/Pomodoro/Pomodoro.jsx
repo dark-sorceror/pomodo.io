@@ -23,10 +23,10 @@ const durations =
 };
 
 function Pomodoro() {
-    const [ timeLeft, setTimeLeft ] = useState(studyDuration);
-    const [ isRunning, setIsRunning ] = useState(false);
-    const [ cycleStage, setCycleStage ] = useState(0);
-    const [ percentage, setPercentage ] = useState(100);
+    const [timeLeft, setTimeLeft] = useState(studyDuration);
+    const [isRunning, setIsRunning] = useState(false);
+    const [cycleStage, setCycleStage] = useState(0);
+    const [percentage, setPercentage] = useState(100);
 
     const isVisible = getPageVisibility();
 
@@ -42,10 +42,12 @@ function Pomodoro() {
                     else {
                         let nextStage;
 
-                        if (pomoSequence > 6) {
+                        if (pomoSequence.length > 6) {
                             pomoSequence.slice(0, 5);
-                            nextStage = (cycleStage) % pomoSequence.length;
-                        } else nextStage = (cycleStage + 1) % pomoSequence.length;
+                            nextStage = cycleStage % pomoSequence.length;
+                        } else {
+                            nextStage = (cycleStage + 1) % pomoSequence.length;
+                        }
 
                         setCycleStage(nextStage);
                         setTimeLeft(durations[pomoSequence[nextStage]]);
@@ -59,7 +61,13 @@ function Pomodoro() {
         }
 
         return () => clearInterval(intervalId);
-    }, [ isRunning, cycleStage, isVisible ]);
+    }, [isRunning, cycleStage, isVisible]);
+
+    useEffect(() => {
+        if (!isVisible && isRunning) {
+            setIsRunning(false);
+        }
+    }, [isVisible, isRunning]);
 
     const handleStartStop = () => setIsRunning((prev) => !prev);
 
@@ -70,7 +78,7 @@ function Pomodoro() {
 
         setTimeLeft(durations[pomoSequence[pomoSequence.length - 1]]);
         setCycleStage(pomoSequence.length - 1);
-    }
+    };
 
     const handleReset = () => {
         setIsRunning(false);
@@ -82,37 +90,60 @@ function Pomodoro() {
     return (
         <section className="timer-container">
             <div className="timer-interface">
-                <TimerProgress percentage={ percentage } />
+                <TimerProgress percentage={percentage} />
                 <div className="timer">
-                    <span className="end-time">{ formatTime() }</span>
-                    <h1 id="time">{ formatCountdownTime(timeLeft) }</h1>
+                    <span className="end-time">{formatTime()}</span>
+                    <h1 id="time">{formatCountdownTime(timeLeft)}</h1>
                     <button
-                        onClick={ () => handleStartStop() }
+                        onClick={() => handleStartStop()}
                         className="start-stop-button button"
                     >
-                        { isRunning ? 'Stop' : 'Start' }
+                        {isRunning ? "Stop" : "Start"}
                     </button>
                     <button
-                        onClick={ () => handleReset() }
+                        onClick={() => handleReset()}
                         className="reset-button"
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" /><path d="M16 16h5v5" /></svg></button>
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-refresh-ccw"
+                        >
+                            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                            <path d="M3 3v5h5" />
+                            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                            <path d="M16 16h5v5" />
+                        </svg>
+                    </button>
                 </div>
                 <div className="timer-modes">
                     <button
-                        className={ pomoSequence[cycleStage] === 'work' ? 'active button' : 'button' }
-                        onClick={ () => handleModified('work') }
-                    >Pomodoro</button>
+                        className={pomoSequence[cycleStage] === "work" ? "active button" : "button"}
+                        onClick={() => handleModified("work")}
+                    >
+                        Pomodoro
+                    </button>
                     <button
-                        className={ pomoSequence[cycleStage] === 'shortBreak' ? 'active button' : 'button' }
-                        onClick={ () => handleModified('shortBreak') }
-                    >Short Break</button>
+                        className={pomoSequence[cycleStage] === "shortBreak" ? "active button" : "button"}
+                        onClick={() => handleModified("shortBreak")}
+                    >
+                        Short Break
+                    </button>
 
                     <button
-                        className={ pomoSequence[cycleStage] === 'longBreak' ? 'active button' : 'button' }
-                        onClick={ () => handleModified('longBreak') }
-                    >Long Break</button>
+                        className={pomoSequence[cycleStage] === "longBreak" ? "active button" : "button"}
+                        onClick={() => handleModified("longBreak")}
+                    >
+                        Long Break
+                    </button>
                 </div>
-
             </div>
         </section>
     );
