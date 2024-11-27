@@ -18,5 +18,5 @@ export function getTodaysDate() {
         }
     };
 
-    return `${weekDays[todaysDate.getUTCDay()]}, ${months[todaysDate.getMonth()]} ${todaysDate.getDay()}${getDateSuffix(todaysDate.getDay())}, ${todaysDate.getFullYear()}`
+    return `${weekDays[todaysDate.getUTCDay()]}, ${months[todaysDate.getMonth()]} ${todaysDate.getDate()}${getDateSuffix(todaysDate.getDate())}, ${todaysDate.getFullYear()}`
 }

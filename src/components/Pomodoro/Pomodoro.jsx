@@ -84,7 +84,7 @@ function Pomodoro() {
             <div className="timer-interface">
                 <TimerProgress percentage={ percentage } />
                 <div className="timer">
-                    <span className="end-time">{ formatTime(durations[pomoSequence[cycleStage]]) }</span>
+                    <span className="end-time">{ formatTime() }</span>
                     <h1 id="time">{ formatCountdownTime(timeLeft) }</h1>
                     <button
                         onClick={ () => handleStartStop() }

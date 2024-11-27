@@ -3,8 +3,13 @@ export function formatTime(secondsToAdd = 0) {
 
     now.setSeconds(now.getSeconds() + secondsToAdd);
 
-    let hours = now.getHours() % 12 ? now.getHours() : 12;
-    let minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();
+    let hours = now.getHours();
+    const minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();
 
-    return `${hours - 12}:${minutes} ${hours >= 12 ? 'PM' : 'AM'}`;
+    const isPM = hours >= 12;
+    const suffix = isPM ? 'PM' : 'AM';
+
+    hours = hours % 12 || 12;
+
+    return `${hours}:${minutes} ${suffix}`;
 }
