@@ -1,0 +1,131 @@
+/* General Popup Styling */
+.popup {
+    position: fixed;
+    bottom: 20%;
+    right: 20%;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  /* Header for Popups */
+  .popup h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Textarea for Sticky Notes */
+  .popup textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    resize: none;
+  }
+  
+  /* Google Calendar Iframe */
+  .popup iframe {
+    border: none;
+    border-radius: 5px;
+  }
+  
+  /* To-Do List */
+  .popup input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .popup button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .popup button:hover {
+    background-color: #0056b3;
+  }
+  
+  .popup ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .popup ul li {
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  
+  /* Daily Quote Block */
+  .popup blockquote {
+    font-style: italic;
+    color: #555;
+    padding-left: 10px;
+    border-left: 3px solid #007bff;
+    margin: 10px 0;
+  }
+  
+  /* Study Component Options */
+  .popup .study-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .popup .study-options button {
+    flex: 1;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    min-width: 80px;
+  }
+  
+  .popup .study-options button:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* Change Background */
+  .change-background {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    width: 250px;
+    background-color: #f4f4f4;
+    border-left: 2px solid #ccc;
+    padding: 15px;
+    z-index: 1000;
+  }
+  
+  .change-background h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  
+  .change-background select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }  

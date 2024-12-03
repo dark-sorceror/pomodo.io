@@ -8,6 +8,9 @@ import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 import { useTheme } from '../context/Theme';
 
 import './Home.css';
+import Profile from '../components/Profile/Profile';
+import TopBar from '../components/TopRightBar/TopBar';
+import MenuBar from '../components/MenuBar/MenuBar'
 
 const Home = () => {
     const { themeMode } = useTheme();
@@ -25,9 +28,14 @@ const Home = () => {
             <main className="container">
                 <Pomodoro />
             </main>
+            <MenuBar/>
             <footer className="footer">
                 <ThemeToggle />
             </footer>
+            <aside className="right-sidebar">
+                <TopBar/>
+                <Profile />
+            </aside>;
         </div>
     );
 };

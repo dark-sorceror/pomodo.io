@@ -1,0 +1,203 @@
+.user-profile-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: width 0.3s ease;
+  width: 350px;
+}
+
+.user-profile-container.collapsed {
+  width: 50px;
+}
+
+.collapse-button {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  background: rgba(158, 157, 157, 0.637);
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  z-index: 1000;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+
+.collapsed-button {
+  right: 10px;
+    left: 420px;
+}
+
+.collapse-button:hover {
+  background: #45a049;
+}
+
+
+.user-profile {
+    width: 100%;
+    background-color: rgba(158, 157, 157, 0.637) ;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 3px solid #FFDF00;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-username {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .profile-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+  }
+  
+  .profile-status {
+    color: #6ef196;
+    font-size: 0.8rem;
+  }
+  
+  .level-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    height: 50px;
+    width: 100%;
+    background-color: #e6e5e5;
+    border-radius: 10px;
+  }
+  
+  .level-label {
+    font-size: 0.9rem;
+    color: black;
+    width: 40px;
+    height: 20px;
+    font-weight: bold;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  
+  .progress-bar {
+    /* flex-grow: 1; */
+    background-color: #ccc;
+    height: 15px;
+    width: 60%;
+    margin: 2px 6px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    background-color: #FFDF00;
+    height: 100%;
+  }
+
+  .recentStudyProgress {
+    background-color: rgb(105, 219, 77);
+    height: 100%;
+  }
+  
+  .friends-section {
+    margin-bottom: 20px;
+  }
+
+  .icon{
+    width: 40px;
+    height: 30px;
+    padding-right: 5px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: 800;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+  }
+  
+  .friends-list {
+    display: flex;
+    align-items: center;
+    padding: 8px
+  }
+  
+  .friend-avatar {
+    width: 75px;
+    height: 75px;;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 3px solid #FFDF00;
+    cursor: pointer;
+  }
+  
+  .more-friends {
+    border: none;
+    color: black;
+    background-color: #ccc;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+  }
+  
+  .study-session {
+    text-align: center;
+  }
+  
+  .session-details {
+    margin: 10px 0;
+  }
+
+  .challenge{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .challenge-button {
+    background-color: #FFDF00;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px;
+  }
+  
+  .challenge-button:hover {
+    background-color: #d4b802;
+  }  
