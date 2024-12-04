@@ -23,10 +23,10 @@ const durations =
 };
 
 function Pomodoro() {
-    const [timeLeft, setTimeLeft] = useState(studyDuration);
-    const [isRunning, setIsRunning] = useState(false);
-    const [cycleStage, setCycleStage] = useState(0);
-    const [percentage, setPercentage] = useState(100);
+    const [ timeLeft, setTimeLeft ] = useState(studyDuration);
+    const [ isRunning, setIsRunning ] = useState(false);
+    const [ cycleStage, setCycleStage ] = useState(0);
+    const [ percentage, setPercentage ] = useState(100);
 
     const isVisible = getPageVisibility();
 
@@ -61,13 +61,13 @@ function Pomodoro() {
         }
 
         return () => clearInterval(intervalId);
-    }, [isRunning, cycleStage, isVisible]);
+    }, [ isRunning, cycleStage, isVisible ]);
 
     useEffect(() => {
         if (!isVisible && isRunning) {
             setIsRunning(false);
         }
-    }, [isVisible, isRunning]);
+    }, [ isVisible, isRunning ]);
 
     const handleStartStop = () => setIsRunning((prev) => !prev);
 
@@ -90,18 +90,18 @@ function Pomodoro() {
     return (
         <section className="timer-container">
             <div className="timer-interface">
-                <TimerProgress percentage={percentage} />
+                <TimerProgress percentage={ percentage } />
                 <div className="timer">
-                    <span className="end-time">{formatTime()}</span>
-                    <h1 id="time">{formatCountdownTime(timeLeft)}</h1>
+                    <span className="end-time">{ formatTime() }</span>
+                    <h1 id="time">{ formatCountdownTime(timeLeft) }</h1>
                     <button
-                        onClick={() => handleStartStop()}
+                        onClick={ () => handleStartStop() }
                         className="start-stop-button button"
                     >
-                        {isRunning ? "Stop" : "Start"}
+                        { isRunning ? "Stop" : "Start" }
                     </button>
                     <button
-                        onClick={() => handleReset()}
+                        onClick={ () => handleReset() }
                         className="reset-button"
                     >
                         <svg
@@ -125,21 +125,21 @@ function Pomodoro() {
                 </div>
                 <div className="timer-modes">
                     <button
-                        className={pomoSequence[cycleStage] === "work" ? "active button" : "button"}
-                        onClick={() => handleModified("work")}
+                        className={ pomoSequence[cycleStage] === "work" ? "active button" : "button" }
+                        onClick={ () => handleModified("work") }
                     >
                         Pomodoro
                     </button>
                     <button
-                        className={pomoSequence[cycleStage] === "shortBreak" ? "active button" : "button"}
-                        onClick={() => handleModified("shortBreak")}
+                        className={ pomoSequence[cycleStage] === "shortBreak" ? "active button" : "button" }
+                        onClick={ () => handleModified("shortBreak") }
                     >
                         Short Break
                     </button>
 
                     <button
-                        className={pomoSequence[cycleStage] === "longBreak" ? "active button" : "button"}
-                        onClick={() => handleModified("longBreak")}
+                        className={ pomoSequence[cycleStage] === "longBreak" ? "active button" : "button" }
+                        onClick={ () => handleModified("longBreak") }
                     >
                         Long Break
                     </button>

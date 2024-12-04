@@ -1,4 +1,4 @@
-const sendResponse = (res, statusCode, data,) => {
+const sendResponse = (res, statusCode, data) => {
     switch (statusCode) {
         case 200:
             return res.status(statusCode).json({
@@ -17,13 +17,13 @@ const sendResponse = (res, statusCode, data,) => {
                     success: false,
                     message: "Bad Request!",
                     error: data,
-                    errorCode: 'BAD_REQUEST'
+                    errorCode: "BAD_REQUEST",
                 });
             } else {
                 return res.status(statusCode).json({
                     success: false,
                     message: "Bad Request!",
-                    errorCode: 'BAD_REQUEST'
+                    errorCode: "BAD_REQUEST",
                 });
             }
         case 401:

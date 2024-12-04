@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from "react";
 
-import { getTodaysDate } from '../services/getDate';
+import { getTodaysDate } from "../../services/getDate";
 
-import { Pomodoro } from '../components/Pomodoro';
-import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
+import { Pomodoro } from "../../components/Pomodoro";
+import { ThemeToggle } from "../../components/ThemeToggle/ThemeToggle";
+import { Profile } from "../../components/Profile";
+import { NavBar } from "../../components/NavBar";
+import { MenuBar } from "../../components/MenuBar";
 
-import { useTheme } from '../context/Theme';
+import { useTheme } from "../../context/Theme";
 
-import './Home.css';
-import Profile from '../components/Profile/Profile';
-import TopBar from '../components/TopRightBar/TopBar';
-import MenuBar from '../components/MenuBar/MenuBar'
+import "./styles.css";
 
-const Home = () => {
+export const Home = () => {
     const { themeMode } = useTheme();
 
     return (
-        <div className={ `wrapper ${themeMode == 'dark' ? 'dark-mode' : '' }`}>
+        <div className={ `wrapper ${themeMode == "dark" ? "dark-mode" : ""}` }>
             <div className="background"></div>
             <div className="background background-dark"></div>
             <nav>
@@ -28,19 +28,18 @@ const Home = () => {
             <main className="container">
                 <Pomodoro />
             </main>
-            <MenuBar/>
+            <MenuBar />
             <footer className="footer">
                 <ThemeToggle />
             </footer>
             <aside className="right-sidebar">
-                <TopBar/>
+                <NavBar />
                 <Profile />
-            </aside>;
+            </aside>
+            ;
         </div>
     );
 };
-
-export default Home;
 
 /*
 const ZenModeToggle = ({themeMode}) => (

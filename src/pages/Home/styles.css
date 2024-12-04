@@ -1,4 +1,4 @@
-@import '../styles/App.css';
+@import '../../styles/App.css';
 
 .wrapper.dark-mode .background {
     opacity: 0;
@@ -80,7 +80,7 @@ nav {
 
 .logo {
     display: flex;
-    background-image: url('../assets/logo.PNG');
+    background-image: url('../../assets/logo.PNG');
     background-size: contain;
     rotate: -90deg;
     height: 100%;

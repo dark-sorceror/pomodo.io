@@ -151,13 +151,17 @@
 }
 
 .timer-modes button {
-    width: 120px;
+    width: 160px;
     height: 50px;
     border-radius: 5px;
     font-weight: 600;
     font-size: 16px;
     background-color: var(--light-inactive-button-bg);
     box-shadow: var(--light-inactive-button-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .timer-modes button:not(.active) {

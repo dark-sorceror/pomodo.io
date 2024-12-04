@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -7,17 +7,14 @@ const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 const { errorHandler } = require("./middleware/errorHandler");
-const connectDatabase = require("./db/database")
+const connectDatabase = require("./db/database");
 
 // App Initialization
 const app = express();
 
 const corsOptions = {
-    origin: [
-        'http://localhost:3000/',
-        '*'
-    ],
-    optionsSuccessStatus: 200
+    origin: ["http://localhost:3000/", "*"],
+    optionsSuccessStatus: 200,
 };
 
 // Middleware
@@ -27,10 +24,12 @@ app.use(express.json({ limit: "200mb", extended: true }));
 app.use(express.urlencoded({ limit: "200mb", extended: true }));
 app.use(errorHandler);
 app.use(helmet());
-app.use(rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100
-}));
+app.use(
+    rateLimit({
+        windowMs: 15 * 60 * 1000,
+        max: 100,
+    })
+);
 
 // connecting database
 connectDatabase();
@@ -42,7 +41,7 @@ app.get("/", (req, res) => {
     res.send("<h1>Backend Server is Running</h1>");
 });
 
-process.on('SIGINT', () => {
+process.on("SIGINT", () => {
     console.log("Shutting down...");
     server.close(() => {
         console.log("Closed all connections");

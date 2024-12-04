@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendResponse } = require("../utils/responseHandler");
-const User = require("../models/user")
+const User = require("../models/user");
 
 const register = async (req, res) => {
     try {
@@ -35,7 +35,7 @@ const login = async (req, res) => {
             user = await User.findOne({ email: email });
         }
 
-        if (!user || !await bcrypt.compare(password, user.password)) {
+        if (!user || !(await bcrypt.compare(password, user.password))) {
             sendResponse(res, 404);
         } else {
             if (bcrypt.compareSync(password, user.password)) {

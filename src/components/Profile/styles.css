@@ -1,89 +1,88 @@
 .user-profile-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  transition: width 0.3s ease;
-  width: 350px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: width 0.3s ease;
+    width: 350px;
 }
 
 .user-profile-container.collapsed {
-  width: 50px;
+    width: 50px;
 }
 
 .collapse-button {
-  position: absolute;
-  top: 10px;
-  left: -30px;
-  background: rgba(158, 157, 157, 0.637);
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 30px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  z-index: 1000;
-  transition: left 0.3s ease, right 0.3s ease;
+    position: absolute;
+    top: 10px;
+    left: -30px;
+    background: rgba(158, 157, 157, 0.637);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 1000;
+    transition: left 0.3s ease, right 0.3s ease;
 }
 
 .collapsed-button {
-  right: 10px;
+    right: 10px;
     left: 420px;
 }
 
 .collapse-button:hover {
-  background: #45a049;
+    background: #45a049;
 }
-
 
 .user-profile {
     width: 100%;
-    background-color: rgba(158, 157, 157, 0.637) ;
+    background-color: rgba(158, 157, 157, 0.637);
     color: white;
     border-radius: 15px;
     padding: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .profile-header {
+}
+
+.profile-header {
     display: flex;
     align-items: center;
-  }
-  
-  .profile-avatar {
+}
+
+.profile-avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     margin-right: 15px;
-    border: 3px solid #FFDF00;
-  }
-  
-  .profile-details {
+    border: 10px solid #ffdf00;
+}
+
+.profile-details {
     display: flex;
     flex-direction: column;
-  }
-  
-  .profile-username {
+}
+
+.profile-username {
     font-size: 1.2rem;
     font-weight: bold;
-  }
-  
-  .profile-stats {
+}
+
+.profile-stats {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
-  }
-  
-  .profile-status {
+}
+
+.profile-status {
     color: #6ef196;
     font-size: 0.8rem;
-  }
-  
-  .level-progress {
+}
+
+.level-progress {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,9 +91,9 @@
     width: 100%;
     background-color: #e6e5e5;
     border-radius: 10px;
-  }
-  
-  .level-label {
+}
+
+.level-label {
     font-size: 0.9rem;
     color: black;
     width: 40px;
@@ -102,9 +101,9 @@
     font-weight: bold;
     padding-left: 17px;
     padding-right: 17px;
-  }
-  
-  .progress-bar {
+}
+
+.progress-bar {
     /* flex-grow: 1; */
     background-color: #ccc;
     height: 15px;
@@ -112,29 +111,29 @@
     margin: 2px 6px;
     border-radius: 5px;
     overflow: hidden;
-  }
-  
-  .progress {
-    background-color: #FFDF00;
-    height: 100%;
-  }
+}
 
-  .recentStudyProgress {
+.progress {
+    background-color: #ffdf00;
+    height: 100%;
+}
+
+.recentStudyProgress {
     background-color: rgb(105, 219, 77);
     height: 100%;
-  }
-  
-  .friends-section {
-    margin-bottom: 20px;
-  }
+}
 
-  .icon{
+.friends-section {
+    margin-bottom: 20px;
+}
+
+.icon {
     width: 40px;
     height: 30px;
     padding-right: 5px;
-  }
-  
-  .section-title {
+}
+
+.section-title {
     font-size: 22px;
     margin-bottom: 10px;
     color: black;
@@ -142,24 +141,24 @@
     display: flex;
     align-items: start;
     justify-content: start;
-  }
-  
-  .friends-list {
+}
+
+.friends-list {
     display: flex;
     align-items: center;
-    padding: 8px
-  }
-  
-  .friend-avatar {
+    padding: 8px;
+}
+
+.friend-avatar {
     width: 75px;
-    height: 75px;;
+    height: 75px;
     border-radius: 50%;
     margin-right: 10px;
-    border: 3px solid #FFDF00;
+    border: 3px solid #ffdf00;
     cursor: pointer;
-  }
-  
-  .more-friends {
+}
+
+.more-friends {
     border: none;
     color: black;
     background-color: #ccc;
@@ -169,25 +168,25 @@
     cursor: pointer;
     width: 65px;
     height: 65px;
-  }
-  
-  .study-session {
-    text-align: center;
-  }
-  
-  .session-details {
-    margin: 10px 0;
-  }
+}
 
-  .challenge{
+.study-session {
+    text-align: center;
+}
+
+.session-details {
+    margin: 10px 0;
+}
+
+.challenge {
     display: flex;
     align-content: center;
     align-items: center;
     justify-items: center;
-  }
-  
-  .challenge-button {
-    background-color: #FFDF00;
+}
+
+.challenge-button {
+    background-color: #ffdf00;
     color: black;
     border: none;
     padding: 10px 20px;
@@ -196,8 +195,8 @@
     font-size: 18px;
     font-weight: 700;
     margin: 5px;
-  }
-  
-  .challenge-button:hover {
+}
+
+.challenge-button:hover {
     background-color: #d4b802;
-  }  
+}

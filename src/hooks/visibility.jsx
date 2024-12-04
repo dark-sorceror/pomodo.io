@@ -15,14 +15,14 @@ function getBrowserDocumentHiddenProp() {
 function getIsDocumentHidden() { return !document[getBrowserDocumentHiddenProp()]; }
 
 export function getPageVisibility() {
-    const [isVisible, setIsVisible] = useState(getIsDocumentHidden());
+    const [ isVisible, setIsVisible ] = useState(getIsDocumentHidden());
     const onVisibilityChange = () => setIsVisible(getIsDocumentHidden());
 
     useEffect(() => {
         document.addEventListener(getBrowserVisibilityProp(), onVisibilityChange, false);
 
         return () => document.removeEventListener(getBrowserVisibilityProp(), onVisibilityChange);
-    },[])
+    }, [])
 
     return isVisible;
 }

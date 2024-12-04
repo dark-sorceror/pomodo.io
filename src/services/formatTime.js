@@ -12,4 +12,4 @@ export function formatTime(secondsToAdd = 0) {
     hours = hours % 12 || 12;
 
     return `${hours}:${minutes} ${suffix}`;
-}
+};

@@ -19,4 +19,4 @@ export function getTodaysDate() {
     };
 
     return `${weekDays[todaysDate.getUTCDay()]}, ${months[todaysDate.getMonth()]} ${todaysDate.getDate()}${getDateSuffix(todaysDate.getDate())}, ${todaysDate.getFullYear()}`
-}
+};
