@@ -9,6 +9,8 @@ import { StickyNotes } from "../PopUps/Sticky Notes";
 import Study from "../PopUps/Study";
 
 import "./styles.css";
+import DailyGift from "../DailyGift";
+import Achievement from "../Achievement";
 
 export const MenuBar = () => {
     const [ activePopup, setActivePopup ] = useState(null);
@@ -136,7 +138,7 @@ export const MenuBar = () => {
                 </button>
                 <button
                     className="icon-button"
-                    onClick={ () => togglePopup("medal") }
+                    onClick={ () => togglePopup("achievements") }
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +181,7 @@ export const MenuBar = () => {
                 </button>
                 <button
                     className="icon-button"
-                    onClick={ () => togglePopup("gift") }
+                    onClick={ () => togglePopup("DailyGift") }
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -263,6 +265,16 @@ export const MenuBar = () => {
             {
                 activePopup === "SeasonPass" && !minimizedPopups["SeasonPass"] && (
                     <SeasonPass onClose={closePopup} />
+                )
+            }
+            {
+                activePopup === "DailyGift" && !minimizedPopups["DailyGift"] && (
+                    <DailyGift onClose={closePopup} />
+                )
+            }
+            {
+                activePopup === "achievements" && !minimizedPopups["achievements"] && (
+                    <Achievement onClose={closePopup} />
                 )
             }
         </>

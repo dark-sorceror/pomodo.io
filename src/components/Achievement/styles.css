@@ -1,0 +1,121 @@
+.achievement {
+    width: 70%;
+    height: 74%;
+    top: 5%;
+    padding: 20px;
+    background: url('../../assets/bg.jpg') center/cover no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #ffd700;
+    text-shadow: 2px 2px #000;
+  }
+  
+  .achievements-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .earned-card {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .earned-card .achievement-card {
+    width: 240px;
+    height: 300px;
+    border: 4px solid #ffd700;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .achievements-grid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .achievement-card {
+    width: 150px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+  }
+  
+  .locked {
+    background: #ccc;
+    color: #666;
+  }
+  
+  .locked-icon {
+    font-size: 2rem;
+    margin-top: 40px;
+  }
+  
+  .unlocked {
+    border: 2px solid #ffd700;
+  }
+  
+  .badge-icon {
+    width: 140px;
+    height: 140px;
+    margin: 10px auto;
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .reward-title {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .reward-date {
+    font-size: 0.8rem;
+    color: #000000;
+  }
+  
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .category-button {
+    padding: 10px 20px;
+    background-color: #2a2a2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  
+  .category-button:hover {
+    background-color: #444;
+  }
+  
+  .category-button.active {
+    background-color: #3b82f6;
+    color: #fff;
+  }

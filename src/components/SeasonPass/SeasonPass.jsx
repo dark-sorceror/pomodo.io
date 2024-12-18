@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import "./SeasonPass.css";
 import dragonImage from '../../assets/dragon_4.jpg';
-
+import BizarreBazaar from "../Bizarre Bazar";
 
 const SeasonPass = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [showBizarreBazaar, setShowBizarreBazaar] = useState(false);
 
   const rewards = [
-    { id: 1, xp: 100, level: 1, isUnlocked: true, name: "Grandpa's Farm", type: "Background",image: dragonImage, },
-    { id: 2, xp: 250, level: 2, isUnlocked: false, image: dragonImage, },
-    { id: 3, xp: 500, level: 3, isUnlocked: false, image: dragonImage, },
-    { id: 4, xp: 1000, level: 4, isUnlocked: false, image: dragonImage, },
-    { id: 5, xp: 2500, level: 5, isUnlocked: false, image: dragonImage, },
-    { id: 6, xp: 5000, level: 6, isUnlocked: false, image: dragonImage, },
+    { id: 1, xp: 100, level: 1, isUnlocked: true, name: "Grandpa's Farm", type: "Background", image: dragonImage },
+    { id: 2, xp: 250, level: 2, isUnlocked: false, image: dragonImage },
+    { id: 3, xp: 500, level: 3, isUnlocked: false, image: dragonImage },
+    { id: 4, xp: 1000, level: 4, isUnlocked: false, image: dragonImage },
+    { id: 5, xp: 2500, level: 5, isUnlocked: false, image: dragonImage },
+    { id: 6, xp: 5000, level: 6, isUnlocked: false, image: dragonImage },
   ];
 
   const handleNextPage = () => {
@@ -23,6 +24,10 @@ const SeasonPass = () => {
     setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
+  if (showBizarreBazaar) {
+    return <BizarreBazaar />;
+  }
+
   return (
     <div className="season-pass">
       {/* Header */}
@@ -31,16 +36,12 @@ const SeasonPass = () => {
       {/* Featured Reward */}
       <div className="featured-reward">
         <div className="img">
-          <img
-            src={dragonImage}
-            alt="Grandpa's Farm"
-            className="reward-img"
-          />
+          <img src={dragonImage} alt="Grandpa's Farm" className="reward-img" />
         </div>
         <div className="context">
           <h2 className="reward-title">Legendary - Background</h2>
           <h3 className="reward-name">Grandpa's Farm</h3>
-          <p className="reward-desc">Grandpa always used to say "The Farm ain't a place, it's a lifestyle</p>
+          <p className="reward-desc">Grandpa always used to say "The Farm ain't a place, it's a lifestyle"</p>
           <div className="reward-buttons">
             <button className="button view-reward">View Reward</button>
             <button className="button redeem">Redeem</button>
@@ -51,10 +52,7 @@ const SeasonPass = () => {
       {/* Rewards Grid */}
       <div className="rewards-grid">
         {rewards.map((reward) => (
-          <div
-            key={reward.id}
-            className={`reward-card ${reward.isUnlocked ? "unlocked" : "locked"}`}
-          >
+          <div key={reward.id} className={`reward-card ${reward.isUnlocked ? "unlocked" : "locked"}`}>
             <div className="reward-image-container">
               <img src={reward.image} alt={`Reward ${reward.level}`} className="reward-image" />
               {!reward.isUnlocked && (
@@ -86,7 +84,7 @@ const SeasonPass = () => {
 
       {/* Category Buttons */}
       <div className="categories">
-        <button className="category-button">Dragons</button>
+        <button className="category-button" onClick={() => setShowBizarreBazaar(true)}>Dragons</button>
         <button className="category-button">Avatars</button>
         <button className="category-button">Swords</button>
       </div>

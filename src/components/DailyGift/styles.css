@@ -1,0 +1,119 @@
+.daily-gift {
+    width: 70%;
+    height: 74%;
+    top: 5%;
+    padding: 20px;
+    background: url("../../assets/bg.jpg") center/cover no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #ffd700;
+    text-shadow: 2px 2px #000;
+  }
+  
+  .gift-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .card {
+    background-color: #774e24;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    margin-top: 90px;
+    border-radius: 8px;
+    width: 100px;
+    height: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card.highlighted {
+    background-color: #ffd700;
+    color: #000;
+  }
+  
+  .card.claimed {
+    opacity: 0.6;
+    position: relative;
+  }
+  
+  .card.claimed::after {
+    content: "Claimed";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px #000;
+  }
+  
+  .card .day {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .card .reward {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .claim-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 20px 40px;
+    margin-top: 50px;
+    font-size: 1.5rem;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .claim-btn:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+  }
+
+  .reward-icon {
+    width: 70px; 
+    height: 70px;
+    margin: 10px auto;
+    display: block;
+  }
+  
+  .card .day {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .card .reward {
+    margin-top: 5px;
+    font-size: 22px;
+    color: #ffd700;
+  }
+  
+  
