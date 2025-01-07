@@ -7,6 +7,7 @@ import { DailyQuote } from "../PopUps/Daily Quote";
 import GoogleCalendar from "../PopUps/GoogleCalendar";
 import { StickyNotes } from "../PopUps/Sticky Notes";
 import Study from "../PopUps/Study";
+import Calendar from "../PopUps/Calendar";
 
 import "./styles.css";
 import DailyGift from "../DailyGift";
@@ -254,7 +255,7 @@ export const MenuBar = () => {
             }
             {
                 activePopup === "GoogleCalendar" && !minimizedPopups["GoogleCalendar"] && (
-                    <GoogleCalendar onClose={closePopup} />
+                    <Calendar onClose={closePopup} />
                 )
             }
             {
