@@ -66,7 +66,36 @@ const login = async (req, res) => {
     }
 };
 
+const discordAuth = async (req, res) => {
+    const code = req.query.code;
+    const clientId = "YOUR_CLIENT_ID";
+    const clientSecret = "YOUR_CLIENT_SECRET";
+    const redirectUri = "http://localhost:3000/auth/discord";
+  
+    try {
+      const response = await fetch("https://discord.com/api/oauth2/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          client_id: clientId,
+          client_secret: clientSecret,
+          grant_type: "authorization_code",
+          code,
+          redirect_uri: redirectUri,
+        }),
+      });
+  
+      const data = await response.json();
+      res.json(data);
+    } catch (err) {
+      res.status(500).send("Error authenticating with Discord");
+    }
+  }
+
+
+
 module.exports = {
     register,
     login,
+    discordAuth
 };

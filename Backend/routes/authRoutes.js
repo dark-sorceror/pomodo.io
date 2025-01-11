@@ -1,5 +1,5 @@
 const express = require("express");
-const { register, login } = require("../controllers/authController");
+const { register, login, discordAuth } = require("../controllers/authController");
 const { body, validationResult } = require("express-validator");
 const { sendResponse } = require("../utils/responseHandler");
 
@@ -27,5 +27,6 @@ router.post(
 );
 
 router.post("/login", login);
+router.get("/auth/discord", discordAuth)
 
 module.exports = router;
